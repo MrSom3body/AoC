@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "2023"
+version = "0.1.0"
+description = ""
+authors = ["MrSom3body <129101708+MrSom3body@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+lib = "^4.0.0"
+sympy = "^1.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
