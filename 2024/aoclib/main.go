@@ -22,10 +22,9 @@ func ReadInput(filePath string) []string {
 	return lines
 }
 
-func Output(o string) {
+func Output[Outputtable int | float32 | string](o Outputtable) {
 	fmt.Println(o)
-
-	cmd := exec.Command("wl-copy", o)
+	cmd := exec.Command("wl-copy", fmt.Sprint(o))
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
