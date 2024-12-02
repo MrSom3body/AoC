@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
@@ -29,4 +30,28 @@ func Output[Outputtable int | float32 | string](o Outputtable) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func LinesTo2D(lines []string) [][]string {
+	var a [][]string
+	for _, line := range lines {
+		a = append(a, strings.Split(line, " "))
+	}
+	return a
+}
+
+func StringsToInts2D(strings [][]string) ([][]int, error) {
+	var ints [][]int
+	for _, row := range strings {
+		var intRow []int
+		for _, str := range row {
+			num, err := strconv.Atoi(str)
+			if err != nil {
+				return nil, fmt.Errorf("error converting %q to int: %w", str, err)
+			}
+			intRow = append(intRow, num)
+		}
+		ints = append(ints, intRow)
+	}
+	return ints, nil
 }
