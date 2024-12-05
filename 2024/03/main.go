@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -22,12 +23,28 @@ func task1(lines []string) int {
 	return sum
 }
 
+func task2(lines []string) int {
+	var modLines []string
+	p := regexp.MustCompile(".*?do()")
+	line := "do()" + strings.Join(lines, " ")
+	splitted := strings.Split(line, "don't()")
+	for _, splittedLine := range splitted {
+		fmt.Println(splittedLine)
+		if strings.Contains(splittedLine, "do()") {
+			loc := p.FindStringIndex(splittedLine)[1]
+			modLines = append(modLines, splittedLine[loc:])
+		}
+	}
+	fmt.Println(modLines)
+	return task1(modLines)
+}
+
 func main() {
 	// test input
 	input := aoclib.ReadInput("./x.in")
-	aoclib.Output(task1(input))
+	aoclib.Output(task2(input))
 
 	// normal input
 	input = aoclib.ReadInput("./i.in")
-	aoclib.Output(task1(input))
+	aoclib.Output(task2(input))
 }
