@@ -36,8 +36,26 @@ DOG:
 	return count
 }
 
-func task2() {
+func task2(nums [][]int) int {
+	count := 0
 
+	for _, row := range nums {
+		rCount := task1([][]int{row})
+		if rCount == 0 {
+			for i := range row {
+				temp := make([]int, len(row))
+				copy(temp, row)
+				temp = append(temp[:i], temp[i+1:]...)
+				rCount = task1([][]int{temp})
+				if rCount == 1 {
+					break
+				}
+			}
+		}
+		count += rCount
+	}
+
+	return count
 }
 
 func main() {
@@ -46,12 +64,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	aoclib.Output(task1(input))
+	aoclib.Output(task2(input))
 
 	// normal input
 	input, err = aoclib.StringsToInts2D(aoclib.LinesTo2D(aoclib.ReadInput("./i.in")))
 	if err != nil {
 		log.Fatal(err)
 	}
-	aoclib.Output(task1(input))
+	aoclib.Output(task2(input))
 }
