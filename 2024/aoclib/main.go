@@ -39,10 +39,10 @@ func Output[Outputtable int | float32 | string](o Outputtable) {
 	}
 }
 
-func LinesTo2D(lines []string) [][]string {
+func LinesTo2D(lines []string, sep string) [][]string {
 	var a [][]string
 	for _, line := range lines {
-		a = append(a, strings.Split(line, " "))
+		a = append(a, strings.Split(line, sep))
 	}
 	return a
 }

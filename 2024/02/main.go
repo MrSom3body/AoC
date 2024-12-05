@@ -60,14 +60,14 @@ func task2(nums [][]int) int {
 
 func main() {
 	// test input
-	input, err := aoclib.StringsToInts2D(aoclib.LinesTo2D(aoclib.ReadInput("./x.in")))
+	input, err := aoclib.StringsToInts2D(aoclib.LinesTo2D(aoclib.ReadInput("./x.in"), " "))
 	if err != nil {
 		log.Fatal(err)
 	}
 	aoclib.Output(task2(input))
 
 	// normal input
-	input, err = aoclib.StringsToInts2D(aoclib.LinesTo2D(aoclib.ReadInput("./i.in")))
+	input, err = aoclib.StringsToInts2D(aoclib.LinesTo2D(aoclib.ReadInput("./i.in"), " "))
 	if err != nil {
 		log.Fatal(err)
 	}
