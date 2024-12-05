@@ -9,6 +9,13 @@ import (
 	"strings"
 )
 
+func Diff(a, b int) int {
+	if a < b {
+		return b - a
+	}
+	return a - b
+}
+
 func ReadInput(filePath string) []string {
 	rawContent, err := os.ReadFile(filePath)
 	if err != nil {
